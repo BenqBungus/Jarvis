@@ -1,0 +1,35 @@
+openai>=1.0.0
+pycaw>=20240210
+comtypes>=1.3.0
+python-docx>=1.1.2
+pypdf>=6.18,<7
+Pillow>=12.3,<13
+pypdfium2>=5.13,<6
+send2trash>=2.1,<3
+pywin32>=311; sys_platform == 'win32'
+winrt-Windows.Media.Ocr>=3.2,<4; sys_platform == 'win32'
+winrt-Windows.Graphics.Imaging>=3.2,<4; sys_platform == 'win32'
+winrt-Windows.Storage.Streams>=3.2,<4; sys_platform == 'win32'
+winrt-Windows.Globalization>=3.2,<4; sys_platform == 'win32'
+winrt-Windows.Foundation>=3.2,<4; sys_platform == 'win32'
+winrt-Windows.Foundation.Collections>=3.2,<4; sys_platform == 'win32'
+
+# Voice input/output (src/jarvis/audio/, src/jarvis/voice_assistant.py).
+# Only needed for `--voice` / `--list-voices`; everything else, including
+# --monitor, runs fine without these installed.
+SpeechRecognition>=3.10
+pyttsx3>=2.90
+PyAudio>=0.2.14
+websockets>=12
+sounddevice>=0.4.6
+
+# CPU/RAM/disk readings for --monitor and the --gui dashboard
+# (src/jarvis/monitoring/checks.py). Everything else, including the rest
+# of --monitor (battery/internet/driver/update), runs fine without this
+# installed -- those checks stay stdlib-only.
+psutil>=5.9
+
+# Native desktop app (src/jarvis/gui/). Only needed for `--gui` /
+# `python -m jarvis.gui`; the text CLI and --voice/--monitor run fine
+# without this installed.
+PySide6>=6.5

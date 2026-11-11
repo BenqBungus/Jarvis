@@ -1,0 +1,32 @@
+.venv/
+# Local Google desktop OAuth downloads must never be committed.
+credentials.json
+client_secret*.json
+token.json
+
+# Secrets and machine-local state.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/data/
+/logs/
+/.claude/
+
+# Generated output, caches, and dependencies.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+node_modules/
+/tmp/
+/output/
+/dist*/
+build/
+dist/
+*.bak
+/docs/**/*.pdf
+/pytest-last.txt

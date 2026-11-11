@@ -1,0 +1,47 @@
+/* Deliberately no border/background/safe-area chrome here: this sits
+   inside the shared bottom-bar wrapper (see app.module.css's .bottomBar)
+   alongside PushToTalkButton, which owns that full-width chrome so the two
+   controls read as one bar instead of two independently-styled ones. */
+.bar {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.input {
+  flex: 1;
+  resize: none;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 10px 12px;
+  font-size: 16px; /* 16px+ prevents iOS Safari's automatic zoom-on-focus */
+  line-height: 1.3;
+  /* Two lines' worth of headroom: on a narrow phone width, alongside the
+     Send and push-to-talk buttons, even a short placeholder can wrap to a
+     second line -- min-height (not a taller rows= value) keeps a genuine
+     one-line entry compact while still leaving room to not clip that
+     wrapped second line when it happens. */
+  min-height: 44px;
+  max-height: 120px;
+}
+
+.input:disabled {
+  opacity: 0.6;
+}
+
+.bar button {
+  background: var(--accent-strong);
+  border: 1px solid var(--border-strong);
+  color: #eaf8ff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.bar button:disabled {
+  opacity: 0.5;
+}

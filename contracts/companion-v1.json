@@ -1,0 +1,31 @@
+{
+  "contract_version": "0.1-draft",
+  "implementation_status": "design_only_no_server",
+  "transport": {"base_path": "/v1", "tls_required": true, "authorization": "Bearer <paired-device-token>", "pairing": "desktop-approved; transport details pending"},
+  "endpoints": {
+    "GET /v1/capabilities": {
+      "response_example": {"version": "0.1", "device_name": "Jarvis PC", "features": {"text_tasks": true, "task_cancel": true, "voice": false, "image_upload": false, "remote_approval": false}}
+    },
+    "GET /v1/status": {
+      "response_example": {"online": true, "state": "idle", "active_task_id": null}
+    },
+    "POST /v1/tasks": {
+      "request_example": {"request_id": "client-generated-uuid", "text": "Inspect my approved project", "project_id": null},
+      "limits": {"text_characters": 3000, "request_id": "UUID; idempotent per paired device", "project_id": "opaque existing desktop-approved grant, never a raw path"},
+      "response_status": 202,
+      "response_example": {"task_id": "server-generated-uuid", "state": "queued"}
+    },
+    "GET /v1/tasks/{task_id}": {
+      "response_example": {"task_id": "server-generated-uuid", "state": "running", "summary": "Reading approved project", "result": null, "error": null, "revision": 1},
+      "states": ["queued", "running", "awaiting_desktop_approval", "completed", "failed", "cancelled"],
+      "polling": "Poll while active; back off when unchanged. Do not resend a task after a timeout without the same request_id."
+    },
+    "POST /v1/tasks/{task_id}/cancel": {
+      "response_example": {"task_id": "server-generated-uuid", "cancel_requested": true},
+      "semantics": "cooperative; does not undo completed actions; poll for terminal state"
+    }
+  },
+  "error_example": {"error": {"code": "desktop_approval_required", "message": "Approve on the desktop.", "retryable": false}},
+  "security": ["Device-scoped task access", "No raw shell endpoints", "No credentials returned", "No filesystem path grants from client text", "No state-changing GET requests", "No automatic remote full access"],
+  "future_extensions": ["pairing protocol", "voice streaming", "user-selected image upload", "incremental task events"]
+}

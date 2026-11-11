@@ -1,0 +1,85 @@
+JARVIS - WINDOWS STANDALONE BETA
+
+1. Right-click the ZIP and choose Extract All.
+2. Open the extracted Jarvis folder and double-click Jarvis.exe.
+3. In Jarvis Setup, paste YOUR OpenAI API key and click Save key.
+   Select your browser, complete setup, then start a voice call.
+
+No Python installation, pip commands or package downloads are needed.
+Keep the entire folder together, including _internal and JarvisDocumentWorker.exe.
+Do not run the document worker yourself. Do not run Jarvis inside the ZIP.
+You can create a shortcut to Jarvis.exe for easier access.
+
+Requires a Windows 11 x64 computer, microphone/speakers and internet for AI voice.
+Each tester needs their own OpenAI API account/key with API billing and model access.
+Jarvis does not provide free API credits and does not contain the developer's key.
+Keys saved in setup use Windows Credential Manager for the current Windows user.
+Do not send your key in chat. Rerun Setup from the tray menu to replace/forget it.
+
+This is an unsigned beta, not a signed Windows installer or Microsoft Copilot.
+Windows may warn about an unknown publisher. Do not disable antivirus or security.
+If your computer blocks the build, ask for help rather than bypassing security.
+
+Start with Full access OFF and harmless test files. Closing processes can lose
+unsaved work. File deletion means Windows Recycle Bin, not permanent deletion.
+Some system actions require confirmation and/or Windows administrator permission.
+
+Try "File info Documents/Report.txt" for existence, size and modification time.
+Folder/file creation now checks metadata after writing. This does not verify
+content quality. During a task, ask "What are you working on?" for current status.
+Multi-step work stops after an unverified close instead of claiming the app exited.
+
+The monitor icon opens Screen Chat with GPT-5.6 Sol. Click Share screen, then type
+your question. Each question sends a new screen image; this is read-only text chat,
+not video, and cannot execute computer commands. Stop or close to end sharing.
+Your API project needs access to gpt-5.6-sol. Realtime voice remains separate.
+
+In Screen Chat, the folder icon lets you select a project and separately approve
+read-only file access. Then Share screen and ask it to investigate the visible
+error using project files. It can list, search and read supported source files,
+with file/line references. The history icon shows what was checked. This mode does
+not edit files or run tests. Each question can use up to six paid model requests.
+Clear, Remove and closing the chat revoke project access. Stop cancels further
+reads and ignores pending answers; already-sent API requests cannot be recalled.
+Use a non-sensitive project copy. Private, linked and generated paths are excluded.
+
+Optional project coding: open the project changes control, enable AI patch
+proposals, then ask for a fix. Review the diff and approve Apply patch to change
+existing files or create new supported source files in existing directories. Each
+new destination must be absent; there is no overwrite fallback. The latest previous
+state is kept in .jarvis-undo.json in that project. Undo restores edits and removes
+only unchanged files created by the patch, preserving newer edits or replacement
+files. Syntax checks do not execute
+code. Real Python pytest requires a separately selected project Python runtime,
+installed pytest/dependencies and explicit execution approval. Tests are NOT
+sandboxed. Full test output stays local unless you opt into sharing it with AI.
+
+Repair checks starts an optional bounded diagnosis/review/retest session without
+a screenshot. Its separate consent allows source and check output to be sent to
+OpenAI (up to 12 paid requests). Each patch still requires review. Limits: two
+diagnoses, three checks and 15 minutes including review. The selected check runs
+again after approval. Cancel or close the changes panel to stop. Applied edits
+remain; Undo restores only the latest patch. A passing check is not proof that
+the whole project works. This loop is locally tested with simulated AI decisions.
+
+The optional Realtime screen assistance sends changed primary-screen frames about every two
+seconds during Realtime calls, with a visible Stop indicator and no countdown.
+Outside a live call, explicit screen questions capture on request. This is not
+Discord frame-rate video. Sharing can increase API costs. Document summaries send extracted content
+to OpenAI after approval. Do not share private/work information without permission.
+OCR is local but depends on Windows OCR languages and has size/time limits.
+Hardware temperature, NitroSense and driver features depend on the machine.
+
+Ordinary website launch uses your installed browser. Advanced Playwright control
+may require a compatible browser connection; it is not promised on every machine.
+
+Settings, logs and history are stored in %LOCALAPPDATA%\Jarvis, not the application
+folder. To remove this beta: disable Start with Windows in Settings, forget the
+saved key via Setup if desired, quit via the tray, then delete the extracted folder.
+Deleting the folder alone leaves personal settings and credentials intact.
+
+Tested here: verified temporary folder/file creation, scoped project reading, bundled GUI rendering,
+voice dependency imports, Word extraction and
+scanned PDF OCR with Python removed from PATH. A clean-machine test and actual
+microphone/cloud conversation test are still required. Report error text without
+including keys or private documents.

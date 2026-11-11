@@ -1,0 +1,21 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Owns the full-width chrome (border/background/safe-area) for the
+   composer + push-to-talk row -- see ComposerBar.module.css's comment on
+   why that chrome lives here instead of on ComposerBar itself. */
+.bottomBar {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px;
+  padding-bottom: calc(10px + var(--safe-bottom));
+  padding-left: calc(12px + var(--safe-left));
+  padding-right: calc(12px + var(--safe-right));
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
