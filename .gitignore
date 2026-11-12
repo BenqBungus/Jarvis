@@ -10,6 +10,16 @@ token.json
 !.env.example
 *.pem
 *.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.db
+*.log
+.secrets/
+.auth/
+service-account*.json
+service_account*.json
 /data/
 /logs/
 /.claude/

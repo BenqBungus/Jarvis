@@ -1,0 +1,13 @@
+title = "Jarvis secret scanning"
+
+[extend]
+useDefault = true
+
+# This exact synthetic value is used to test redaction. Do not exclude entire
+# test directories: real credentials added to a test must still be detected.
+[[allowlists]]
+description = "Exact nonfunctional redaction fixture in four tests"
+condition = "AND"
+regexTarget = "secret"
+regexes = ['''^abcdefghijk12345$''']
+paths = ['''^tests/test_(audit_traces|command_session|privacy|tool_registry)\.py$''']
